@@ -1,5 +1,6 @@
 import { useCart } from "../context/CartContext";
 import { FiTrash2 } from "react-icons/fi";
+import { SlBasketLoaded } from "react-icons/sl";
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart } = useCart();
@@ -21,7 +22,10 @@ const Cart = () => {
                 <img className="w-full h-[200px] object-contain" src={item.image} alt={item.title} /> {item.title} - <strong>{item.price}$</strong>
                 </span>
                 <button
-                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg flex items-center"
+                  className="relative px-6 py-3 flex items-center text-lg font-bold text-white uppercase transition-all duration-300 
+                      bg-gradient-to-r from-red-500 to-red-400 rounded-lg 
+                      shadow-lg shadow-blue-500/50 hover:shadow-purple-500/50 
+                      hover:scale-105 active:scale-95 overflow-hidden"
                   onClick={() => removeFromCart(item.id)}
                 >
                   <FiTrash2 className="mr-2" /> O‘chirish
@@ -32,9 +36,10 @@ const Cart = () => {
 
           <div className="flex justify-end mt-4">
             <button
-              className="p-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg 
-                   shadow-lg hover:shadow-xl transition duration-300 ease-in-out 
-                   ring-2 ring-blue-400 hover:ring-4 focus:outline-none"
+              className="relative px-6 py-3 text-lg font-bold text-white uppercase transition-all duration-300 
+                      bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg 
+                      shadow-lg shadow-blue-500/50 hover:shadow-purple-500/50 
+                      hover:scale-105 active:scale-95 overflow-hidden"
               onClick={clearCart}
             >
               Savatchani tozalash

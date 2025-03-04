@@ -11,7 +11,6 @@ export const CartProvider = ({ children }) => {
     }, []);
 
     useEffect(() => {
-        console.log("🛒 Savat yangilandi:", cart);
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 

@@ -25,21 +25,27 @@ const ProductDetail = () => {
     return (
         <div className="container mx-auto p-5">
             <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg mb-4"
+                className="relative px-6 py-3 text-lg font-bold text-white uppercase transition-all duration-300 
+                      bg-gradient-to-r from-red-500 to-purple-600 rounded-lg 
+                      shadow-lg shadow-blue-500/50 hover:shadow-purple-500/50 
+                      hover:scale-105 active:scale-95 overflow-hidden"
                 onClick={() => navigate(-1)}
             >
                 Orqaga
             </button>
 
             <div className="flex gap-5">
-                <img className="w-[300px] h-[300px] object-contain border p-2" src={product.image} alt={product.title} />
+                <img className="w-[300px] h-[300px] object-contain border m-4 p-2" src={product.image} alt={product.title} />
                 <div>
                     <h2 className="text-3xl font-bold">{product.title}</h2>
                     <p className="text-lg text-gray-700">{product.description}</p>
                     <p className="text-xl font-semibold">Narxi: {product.price} $</p>
                     <p className="text-sm text-gray-500">Kategoriya: {product.category}</p>
                     <button
-                        className="bg-green-500 text-white px-4 py-2 mt-4 rounded-lg"
+                        className="relative m-4 px-6 py-3 text-lg font-bold text-white uppercase transition-all duration-300 
+                      bg-gradient-to-r from-green-500 to-purple-600 rounded-lg 
+                      shadow-lg shadow-blue-500/50 hover:shadow-purple-500/50 
+                      hover:scale-105 active:scale-95 overflow-hidden"
                         onClick={() => addToCart(product)}
                     >
                         Savatga qo‘shish
