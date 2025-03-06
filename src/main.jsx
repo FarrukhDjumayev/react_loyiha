@@ -15,8 +15,6 @@ import MainBody from "./components/mainbody.jsx";
 
 const Main = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  // Sahifa yangilanganida localStorage dan tokenni tekshirish
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {

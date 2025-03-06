@@ -19,4 +19,12 @@ button {
     top: 0;
     left: 0;
   }
+.forsticky{
+  position: sticky; top: 100px;
+  z-index: 1000;
+}
+
+.navsticky{
+  position: sticky; top: 0;
   
+}

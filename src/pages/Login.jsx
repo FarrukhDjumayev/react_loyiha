@@ -1,39 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Login = ({ setAuth }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(""); // Xatolikni chiqarish uchun
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  console.log("username: johnd");
-  console.log("password: m38rmF$");
-  
-  
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(""); // Avvalgi xatoni tozalash
+    setError("");
 
     try {
       const response = await fetch("https://fakestoreapi.com/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
+        body: JSON.stringify({ username, password }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", data.token); // Tokenni saqlash
+        localStorage.setItem("token", data.token);
         setAuth(true);
         navigate("/");
       } else {
@@ -48,13 +46,18 @@ const Login = ({ setAuth }) => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-900">
-      <div className="bg-gray-800 p-8 rounded-2xl shadow-lg w-96 text-white border border-gray-700 relative overflow-hidden">
-        <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+      <div
+        className="bg-gray-800 p-8 rounded-2xl shadow-lg w-96 text-white border border-gray-700 relative overflow-hidden"
+        data-aos="zoom-in"
+      >
+        <h2 className="text-2xl font-bold text-center mb-6" data-aos="fade-down">
+          Login
+        </h2>
 
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>} {/* Xatolikni chiqarish */}
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
         <form onSubmit={handleLogin} className="space-y-4">
-          <div className="relative">
+          <div className="relative" data-aos="fade-right">
             <input
               type="text"
               className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -65,7 +68,7 @@ const Login = ({ setAuth }) => {
             />
           </div>
 
-          <div className="relative">
+          <div className="relative" data-aos="fade-left">
             <input
               type={showPassword ? "text" : "password"}
               className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -76,7 +79,7 @@ const Login = ({ setAuth }) => {
             />
             <button
               type="button"
-              className="absolute top-3 right-4 text-gray-400 hover:text-white"
+              className="absolute bg-transparent top-3 right-4 text-gray-400 hover:text-white"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -91,6 +94,7 @@ const Login = ({ setAuth }) => {
                 : "bg-blue-600 hover:bg-blue-500"
             }`}
             disabled={loading}
+            data-aos="fade-up"
           >
             {loading ? "Loading..." : "Login"}
           </button>
