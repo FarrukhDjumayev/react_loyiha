@@ -12,6 +12,10 @@ const Login = ({ setAuth }) => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  
+  console.log("johnd");
+  console.log("m38rmF$");
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
